@@ -20,7 +20,7 @@ function error_exit
 CLUSTER_NAME=${1-imager}
 NUM_NODES=3
 MACHINE_TYPE=n1-standard-1
-ZONE=us-central1-f
+ZONE=europe-west1-d
 TEMPKEY=false
 
 # Source the config
@@ -76,7 +76,7 @@ echo "done."
 
 # Deploy secrets, replication controllers, and services
 echo -n "* Deploying services, controllers, and secrets to Google Container Engine..."
-kubectl create -f ssl_secrets.yaml >/dev/null || error_exit "Error deploying ssl_secrets.yaml" 
+kubectl create -f ../jenkins-secrets/ssl_secrets.yaml >/dev/null || error_exit "Error deploying ssl_secrets.yaml" 
 kubectl create -f service_ssl_proxy.yaml >/dev/null || error_exit "Error deploying service_ssl_proxy.yaml"
 kubectl create -f service_jenkins.yaml >/dev/null || error_exit "Error deploying service_jenkins.yaml"
 
