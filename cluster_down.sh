@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 CLUSTER_NAME=${1-imager}
-ZONE=us-central1-f
+ZONE=europe-west1-d
 
 # Delete services
 kubectl delete -f service_jenkins.yaml
