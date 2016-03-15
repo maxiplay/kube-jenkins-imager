@@ -82,7 +82,7 @@ kubectl create -f service_jenkins.yaml >/dev/null || error_exit "Error deploying
 
 # Replace {{image}} tokens with image URls sourced from images.cfg
 cat ssl_proxy.yaml | sed "s@image:.*@image: $PROXY_IMAGE@" | kubectl create -f - >/dev/null || error_exit "Error deploying ssl_proxy.yaml"
-cat leader.yaml | sed "s@image:.*@image: $LEADER_IMAGE@" | kubectl create -f - >/dev/null || error_exit "Error deploying leader.yaml"
+cat ../jenkins-backup/leader-restore.yaml | sed "s@image:.*@image: $LEADER_IMAGE@" | kubectl create -f - >/dev/null || error_exit "Error deploying leader.yaml"
 cat agent.yaml | sed "s@image:.*@image: $PACKER_IMAGE@" | kubectl create -f - >/dev/null || error_exit "Error deploying agent.yaml"
 echo "done."
 
